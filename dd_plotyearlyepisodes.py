@@ -27,7 +27,7 @@ best_fit = [slope * year + intercept for year in years]
 
 plt.plot(years, best_fit, 'k--', label=f'Best fit (r={r:.2f})')
 
-plt.legend()
+
 plt.tight_layout()
 plt.savefig(dir+'\\Yearly bar plots.png')
 
