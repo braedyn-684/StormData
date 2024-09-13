@@ -16,7 +16,8 @@ for i in range(len(df)):
     df.loc[i,'TOTAL_AREA'] = area
 
 fig, ax1 = plt.subplots(figsize = (6, 6))
-filtered_df = df[df['DAMAGE_PROPERTY_CPI'] >= 0]
+# filtered_df = df[df['DAMAGE_PROPERTY_CPI'] >= 0]
+filtered_df = df[df['EVENT_TYPE'] == 'Ice Storm']
 
 slope, intercept, r, p, se = linregress(filtered_df['DAMAGE_PROPERTY_CPI'], filtered_df['TOTAL_AREA'])
 
@@ -27,6 +28,6 @@ ax1.set_xlabel('Property Damage (CPI Adjusted)')
 ax1.set_ylabel('Area Affected in Square Miles')
 xticks = ax1.get_xticks()
 ax1.set_xticklabels([f'${x/1e6:.0f}M' for x in xticks])
-plt.title('Property Damage vs Total Area of AR Winter-Related Events')
+plt.title('Property Damage vs Total Area of AR Ice Storm Events')
 plt.legend()
-plt.savefig(dir+'\\Damage versus Size of Storm.png')
+plt.savefig(dir+'\\Damage versus Size of Storm Ice Storm.png')

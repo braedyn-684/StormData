@@ -17,7 +17,8 @@ for i in range(len(df)):
     df.loc[i,'LENGTH_IN_HOURS'] = hourdiff
 
 fig, ax1 = plt.subplots(figsize = (6, 6))
-filtered_df = df[df['DAMAGE_PROPERTY_CPI'] >= 0]
+# filtered_df = df[df['DAMAGE_PROPERTY_CPI'] >= 0]
+filtered_df = df[df['EVENT_TYPE'] == 'Ice Storm']
 
 slope, intercept, r, p, se = linregress(filtered_df['DAMAGE_PROPERTY_CPI'], filtered_df['LENGTH_IN_HOURS'])
 
@@ -28,6 +29,6 @@ ax1.set_xlabel('Property Damage (CPI Adjusted)')
 ax1.set_ylabel('Length of Event in Hours')
 xticks = ax1.get_xticks()
 ax1.set_xticklabels([f'${x/1e6:.0f}M' for x in xticks])
-plt.title('Property Damage vs Length of Storm of AR Winter-Related Events')
+plt.title('Property Damage vs Length of Storm of AR Ice Storm Events')
 plt.legend()
-plt.savefig(dir+'\\Damage versus Length of Storm.png')
+plt.savefig(dir+'\\Damage versus Length of Storm Ice Storms.png')
