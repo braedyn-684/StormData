@@ -2,14 +2,14 @@ import pandas as pd
 import os
 
 dir = os.path.dirname(os.path.abspath(__file__))
-df = pd.read_csv(dir+'\\2020 Population and Race.csv')
+df = pd.read_csv(dir+'\\US Census/2020 Population and Race.csv')
 df = df.set_index('Label (Grouping)')
 county_names = df.columns.str.replace(" County, Arkansas", "")
 df_ = pd.DataFrame(index=county_names)
 
 years = ['2000','2010','2020']
 for i in range(len(years)):
-    df = pd.read_csv(dir+'\\'+years[i]+' Population and Race.csv')
+    df = pd.read_csv(dir+'\\US Census/'+years[i]+' Population and Race.csv')
 
     df = df.set_index('Label (Grouping)')
 
@@ -35,22 +35,28 @@ for i in range(len(years)):
         df.loc['        Some Other Race alone',county] +\
         df.loc['    Population of two or more races:',county]
 
-        df_.loc[county,'PNW'+years[i]] = non_white * 100 / df_.loc[county,'POP'+years[i]]
+        df_.loc[county,'PNW'+years[i]] = round(non_white * 100 / df_.loc[county,'POP'+years[i]], 2)
 
+cpi = pd.read_csv(dir+'\\CPI adjustments.csv')
+cpi = cpi.set_index('Year')
 
 for i in range(len(years)):
- if i ==1:
-    df = pd.read_csv(dir+'\\'+years[i]+' Income.csv')
+    df = pd.read_csv(dir+'\\US Census/'+years[i]+' Income.csv')
     df = df.set_index('Label (Grouping)')
     df.columns = df.columns.str.replace(" County, Arkansas", "")
     for col in df.columns:
-        print(col)
+        # print1(col)
         df[col] = df[col].str.replace(',', '').astype(float)
 
     for county in county_names:
         name = 'MINC'+years[i]
         df_.loc[county,name] = df.loc['Median income (dollars)',county]
+        name_inf = 'MICPI'+years[i]
+        df_.loc[county,name_inf] = round(df.loc['Median income (dollars)',county]*\
+                    (cpi.loc[2024,'Annual'] / cpi.loc[int(years[i]),'Annual']), 0)
 
 
 
-    # df = pd.read_csv(dir+'\\'+years[i]+' Population and Race.csv')
+df_.index.name = 'COUNTY'
+
+df_.to_csv(dir+'\\US Census/Decadal Demographic info.csv')
