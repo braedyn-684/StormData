@@ -23,12 +23,12 @@ grouped_df = df.groupby('EPISODE_ID').agg({
 grouped_df['TOTAL_INJURIES'] = grouped_df['INJURIES_DIRECT'] + grouped_df['INJURIES_INDIRECT']
 grouped_df['TOTAL_DEATHS'] = grouped_df['DEATHS_DIRECT'] + grouped_df['DEATHS_INDIRECT']
 
-grouped_df.to_csv(dir+'\\Storm Data by Episode.csv', index=False)
+# grouped_df.to_csv(dir+'\\Storm Data by Episode.csv', index=False)
 
 
 
 dir = os.path.dirname(os.path.abspath(__file__))
-df = pd.read_csv(dir+'\\Storm Data CPI.csv')
+df = pd.read_csv(dir+'\\Storm Data by Episode.csv')
 df['BEGIN_DATE_TIME'] = pd.to_datetime(df['BEGIN_DATE_TIME'])
 df['BEGIN_DATE'] = df['BEGIN_DATE_TIME'].dt.date
 
