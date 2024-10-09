@@ -1,0 +1,26 @@
+Event,Variable,State,Rank,Value
+Heavy Snow,Direct Deaths,CALIFORNIA,1.0st,17
+Heavy Snow,Indirect Deaths,NEW MEXICO,1.0st,23
+Heavy Snow,Direct Injuries,UTAH,1.0st,226
+Heavy Snow,Indirect Injuries,DELAWARE,1.0st,108
+Heavy Snow,CPI-Adj. Damage,NEW YORK,1.0st,"$230,367,774.55"
+Ice Storm,Direct Deaths,KANSAS,1.0st,15.0
+Ice Storm,Indirect Deaths,TEXAS,1.0st,19.0
+Ice Storm,Direct Injuries,SOUTH DAKOTA,1.0st,67.0
+Ice Storm,Indirect Injuries,COLORADO,1.0st,500.0
+Ice Storm,CPI-Adj. Damage,ARKANSAS,1.0st,"$2,157,287,777.51"
+Winter Storm,Direct Deaths,UTAH,1.0st,20
+Winter Storm,Indirect Deaths,WISCONSIN,1.0st,37
+Winter Storm,Direct Injuries,UTAH,1.0st,417
+Winter Storm,Indirect Injuries,TEXAS,1.0st,540
+Winter Storm,CPI-Adj. Damage,OHIO,1.0st,"$1,545,882,875.91"
+Winter Weather,Direct Deaths,TEXAS,1.0st,28
+Winter Weather,Indirect Deaths,WISCONSIN,1.0st,79
+Winter Weather,Direct Injuries,NEW JERSEY,1.0st,472
+Winter Weather,Indirect Injuries,PENNSYLVANIA,1.0st,487
+Winter Weather,CPI-Adj. Damage,TEXAS,1.0st,"$36,748,236.56"
+All,Direct Deaths,CALIFORNIA,1.0st,57
+All,Indirect Deaths,TEXAS,1.0st,130
+All,Direct Injuries,UTAH,1.0st,645
+All,Indirect Injuries,TEXAS,1.0st,1296
+All,CPI-Adj. Damage,ARKANSAS,1.0st,"$2,374,585,947.01"

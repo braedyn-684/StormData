@@ -1,0 +1,26 @@
+Event,Variable,Rank,Value
+Heavy Snow,Direct Deaths,50th,0
+Heavy Snow,Indirect Deaths,50th,0
+Heavy Snow,Direct Injuries,50th,0
+Heavy Snow,Indirect Injuries,50th,0
+Heavy Snow,CPI-Adj. Damage,36th,"$2,038,334.49"
+Ice Storm,Direct Deaths,5th,7.0
+Ice Storm,Indirect Deaths,8th,3.0
+Ice Storm,Direct Injuries,27th,1.0
+Ice Storm,Indirect Injuries,48th,0.0
+Ice Storm,CPI-Adj. Damage,1st,"$2,157,287,777.51"
+Winter Storm,Direct Deaths,27th,3
+Winter Storm,Indirect Deaths,17th,7
+Winter Storm,Direct Injuries,30th,5
+Winter Storm,Indirect Injuries,30th,6
+Winter Storm,CPI-Adj. Damage,5th,"$210,620,137.66"
+Winter Weather,Direct Deaths,34th,1
+Winter Weather,Indirect Deaths,21st,16
+Winter Weather,Direct Injuries,35th,2
+Winter Weather,Indirect Injuries,36th,13
+Winter Weather,CPI-Adj. Damage,8th,"$4,639,697.35"
+All,Direct Deaths,25th,11
+All,Indirect Deaths,22nd,26
+All,Direct Injuries,43rd,8
+All,Indirect Injuries,39th,19
+All,CPI-Adj. Damage,1st,"$2,374,585,947.01"
