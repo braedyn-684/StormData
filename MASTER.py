@@ -13,7 +13,7 @@ demo = pd.read_csv(dir+'\\US Census/Decadal Demographic info.csv')
 for i in range(len(demo)):
     demo.loc[i,'COUNTY'] = demo.loc[i,'COUNTY'].upper()
 
-lulc = pd.read_csv(dir+'\\Arkansas_LandCover.csv')
+lulc = pd.read_csv(dir+'\\Arkansas_LandCover_Percents.csv')
 lulc = lulc.rename(columns={'NAME':'COUNTY'})
 for i in range(len(lulc)):
     lulc.loc[i,'COUNTY'] = lulc.loc[i,'COUNTY'].upper()
@@ -52,9 +52,10 @@ for county in county_names:
 df = pd.merge(df,demo,left_index=True, right_index=True)
 
 for county in county_names:
-    df.loc[county,'AGPER'] = round(lulc.loc[county,'AgPer'],2)
-    df.loc[county,'FORPER'] = round(lulc.loc[county,'ForPer'],2)
-    df.loc[county,'URBPER'] = round(lulc.loc[county,'UrbPer'],2)
+    df.loc[county,'AGPER'] = round(lulc.loc[county,'AGPER'],2)
+    df.loc[county,'FORPER'] = round(lulc.loc[county,'FORPER'],2)
+    df.loc[county,'URBPER'] = round(lulc.loc[county,'URBPER'],2)
+    df.loc[county,'WATPER'] = round(lulc.loc[county,'WATPER'],2)
 
 
 df.to_csv(dir+'\\master.csv',index=True)
