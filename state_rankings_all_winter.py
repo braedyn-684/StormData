@@ -9,7 +9,8 @@ all_files = os.listdir(stormevents_dir)
 csv_files = [file for file in all_files if file.endswith('.csv')]
 
 event_types = ["Blizzard","Lake-Effect Snow","Sleet","Heavy Snow", 
-               "Winter Storm", "Winter Weather", "Ice Storm"]
+               "Winter Storm", "Winter Weather", "Ice Storm",
+               "Extreme Cold/Wind Chill", "Cold/Wind Chill"]
 
 dfs=[]
 for csv_file in csv_files:
@@ -40,6 +41,8 @@ combined_df = pd.merge(combined_df, cpi[['Year', 'Annual']], on='Year', how='lef
 combined_df['DAMAGE_PROPERTY_CPI'] = combined_df['DAMAGE_PROPERTY'] *\
     (cpi.loc[len(cpi)-1,'Annual'] / combined_df['Annual'])
 
+df2 = combined_df[combined_df['STATE']=='ARKANSAS']
+df2.to_csv(dir+'\\AR All Types.csv', index=False)
 
 ALL = combined_df.groupby('STATE').agg({
     'INJURIES_DIRECT': 'sum',
@@ -51,6 +54,18 @@ ALL = combined_df.groupby('STATE').agg({
 }).reset_index()
 
 States = ALL['STATE']
+
+def capitalize(item):
+    # new_list=[]
+    # for item in lst:
+        words = item.split()
+        new_words = ' '.join([word.capitalize() if word != 'OF' else word.lower() for word in words])
+        return new_words
+    #     new_list.append(new_words)
+    # return new_list
+
+for i in range(len(ALL)):
+    ALL.loc[i,'Name'] = capitalize(ALL.loc[i,'STATE'])
 ALL.set_index('STATE', inplace=True)
 
 # var = ['DD','ID','DI','II','CPI']

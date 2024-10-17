@@ -57,5 +57,12 @@ for county in county_names:
     df.loc[county,'URBPER'] = round(lulc.loc[county,'URBPER'],2)
     df.loc[county,'WATPER'] = round(lulc.loc[county,'WATPER'],2)
 
+elev = pd.read_csv(dir+'\\Arkansas_Mean_Elevation.csv')
+for i in range(len(elev)):
+    elev.loc[i,'NAME'] = elev.loc[i,'NAME'].upper()
+elev = elev.set_index('NAME')
+
+for county in county_names:
+    df.loc[county,'ELEV'] = round(elev.loc[county,'mean'],3)
 
 df.to_csv(dir+'\\master.csv',index=True)
