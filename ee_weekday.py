@@ -40,12 +40,12 @@ funding_by_weekday = df.groupby(['MEDIAN WEEKDAY'])['DAMAGE_PROPERTY_CPI'].sum()
 
 funding_by_weekday = funding_by_weekday.loc[weekday_order]
 
-fig, ax1 = plt.subplots(figsize = (10, 6))
+fig, ax1 = plt.subplots(figsize = (8, 6))
 funding_by_weekday.plot(kind='bar',color='skyblue',ax=plt.gca())
 ax1.set_xticks(range(len(weekdays)))
 ax1.set_xticklabels(weekdays)
 plt.title('Damage by median weekday in Arkansas with CPI adjustment')
-plt.ylabel('Total Federal Funding ($)')
+plt.ylabel('Total CPI-adjusted property damage ($)')
 plt.xticks(rotation=0)
 plt.xlabel('')
 yticks = ax1.get_yticks()

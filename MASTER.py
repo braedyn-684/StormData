@@ -66,3 +66,11 @@ for county in county_names:
     df.loc[county,'ELEV'] = round(elev.loc[county,'mean'],3)
 
 df.to_csv(dir+'\\master.csv',index=True)
+
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(df)
+scaled_df = pd.DataFrame(scaled_data, columns=df.columns, index=df.index)
+
+scaled_df.to_csv(dir+'\\master_scaled.csv',index=True)

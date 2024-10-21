@@ -58,3 +58,19 @@ for year in years:
 
 df1 = df1.T
 df1.to_csv(dir+'\\Correlation Plots\\correlation.csv')
+
+
+df2 = df.select_dtypes(include='number')
+
+mean = df2.mean()
+std_dev = df2.std()
+min_val = df2.min()
+max_val = df2.max()
+stats_df = pd.DataFrame({
+    'mean': mean,
+    'standard deviation': std_dev,
+    'min': min_val,
+    'max': max_val
+})
+stats_df.index.name = 'Factors'
+stats_df.to_csv(dir+'\\master_stats.csv')
