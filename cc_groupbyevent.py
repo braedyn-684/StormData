@@ -5,6 +5,7 @@ dir = os.path.dirname(os.path.abspath(__file__))
 df = pd.read_csv(dir+'\\Storm Data CPI.csv')
 
 df['BEGIN_DATE_TIME'] = pd.to_datetime(df['BEGIN_DATE_TIME'])
+df['END_DATE_TIME'] = pd.to_datetime(df['END_DATE_TIME'])
 
 df['EPISODE_NARRATIVE'] = df['EPISODE_NARRATIVE'].fillna('').astype(str)
 
@@ -40,8 +41,8 @@ grouped_df.to_csv(dir+'\\Storm Data by Episode.csv', index=False)
 grouped_df['BEGIN_DATE'] = grouped_df['BEGIN_DATE_TIME'].dt.date
 
 grouped_df1 = grouped_df.groupby('BEGIN_DATE').agg({
-    'BEGIN_DATE_TIME':'first',
-    'END_DATE_TIME':'first',
+    'BEGIN_DATE_TIME':'min',
+    'END_DATE_TIME':'max',
     'INJURIES_DIRECT': 'sum',
     'INJURIES_INDIRECT': 'sum',
     'DEATHS_DIRECT': 'sum',

@@ -53,8 +53,6 @@ ALL = combined_df.groupby('STATE').agg({
     'DAMAGE_PROPERTY_CPI': 'sum',
 }).reset_index()
 
-States = ALL['STATE']
-
 def capitalize(item):
     # new_list=[]
     # for item in lst:
@@ -66,42 +64,16 @@ def capitalize(item):
 
 for i in range(len(ALL)):
     ALL.loc[i,'Name'] = capitalize(ALL.loc[i,'STATE'])
-ALL.set_index('STATE', inplace=True)
+states = ALL['Name']
+ALL.set_index('Name', inplace=True)
 
-# var = ['DD','ID','DI','II','CPI']
-# var_full = ['DEATHS_DIRECT','DEATHS_INDIRECT','INJURIES_DIRECT',
-#             'INJURIES_INDIRECT','DAMAGE_PROPERTY_CPI']
-# var_names = ['Direct Deaths','Indirect Deaths','Direct Injuries',
-#              'Indirect Injuries','CPI-Adj. Damage']
 
-# def ordinal(n):
-#     if 10 <= n % 100 <= 20:
-#         suffix = 'th'
-#     else:
-#         suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
-#     return str(n) + suffix
+pop = pd.read_csv(dir+'\\US Population by state.csv')
+pop = pop.set_index('State')
+for state in states:
+    if state != 'Virgin Islands':
+        ALL.loc[state,'POP'] = pop.loc[state,'Total']
 
-# for v in range(5): 
-#     df['ALL'+' '+var[v]] = ALL[var_full[v]]
-# for v in range(5): 
-#     df['ALL'+' '+var[v]+' Rank'] = df['ALL'+' '+var[v]].rank(ascending=False,method='max')
+ALL['DMGPOP2020'] = ALL['DAMAGE_PROPERTY_CPI']/ALL['POP']
 
-# rank_one_data = []
-# for v in range(5): 
-#     top_state = df[df['ALL'+' '+var[v]+' Rank'] == 1.0].index#.tolist()
-#     rank = 1
-#     if v == 4:
-#         value = locale.currency(df.loc[top_state[0],'ALL'+' '+var[v]],grouping=True)
-#     else:
-#         value = str(df.loc[top_state[0],'ALL'+' '+var[v]])
-#     rank_one_data.append({
-#         'Event': 'All',
-#         'Variable': var_names[v],
-#         'State': top_state[0],
-#         'Rank': ordinal(rank),
-#         'Value':value
-#     })
-
-# rank_one_df = pd.DataFrame(rank_one_data)
-# print(rank_one_df)
 ALL.to_csv(dir+'\\All Winter Types Ranking.csv', index=True)
