@@ -45,3 +45,5 @@ for i in range(len(df)):
 
 
 df.to_csv(dir+'\\Storm Data CPI.csv', index=False)
+
+

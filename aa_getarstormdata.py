@@ -51,3 +51,4 @@ for i in range(len(combined_df)):
             combined_df.loc[i,'CZ_NAME'] = original[j]
 
 combined_df.to_csv(dir+'\\Storm Data.csv', index=False)
+
