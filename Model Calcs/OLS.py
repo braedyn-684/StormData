@@ -8,7 +8,7 @@ df = pd.read_csv(dir+'\\master_scaled.csv')
 
 Y = df['DMGPOP2020']
 X = df[['PNW2000','MICPI2000','AGPER','FORPER','URBPER','WATPER','ELEV','TMP2000','PCP2000']]
-X = df[['AGPER','ELEV','TMP2020']]
+X = df[['AGPER','ELEV','TMP2020',]]
 
 X = sm.add_constant(X)
 model = sm.OLS(Y,X).fit()

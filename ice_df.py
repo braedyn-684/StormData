@@ -4,12 +4,12 @@ from datetime import datetime
 
 dir = os.path.dirname(os.path.abspath(__file__))
 df0 = pd.read_csv(dir+'\\Storm Data CPI.csv')
-ice_df = df0[df0['EVENT_TYPE']=="Ice Storm"]
-ice_df = ice_df.reset_index()
-file_save_name = 'master ice'
-# event_types = ["Heavy Snow", "Winter Storm", "Winter Weather", "Ice Storm"]
-# ice_df = df0[df0['EVENT_TYPE'].isin(event_types)]
-# file_save_name = 'master'
+# ice_df = df0[df0['EVENT_TYPE']=="Ice Storm"]
+# ice_df = ice_df.reset_index()
+# file_save_name = 'master_ice'
+event_types = ["Heavy Snow", "Winter Storm", "Winter Weather", "Ice Storm"]
+ice_df = df0[df0['EVENT_TYPE'].isin(event_types)]
+file_save_name = 'master'
 
 df2 = pd.read_csv(dir+'\\Storm Data by County.csv')
 county_names = df2['COUNTY']
@@ -49,7 +49,10 @@ def decades(input_df,date1,date2):
     new_df1 = new_df1.set_index('COUNTY')
     for county in counties:
         new_df1.loc[county,'COUNT'] = input_count_df.loc[county,'Report_Count']
+    for county in county_names:
         new_df1.loc[county,'FIPS'] = df2.loc[county,'FIPS']
+        if pd.isna(new_df1.loc[county, 'COUNT']):
+            new_df1.loc[county, 'COUNT'] = 0
     return new_df1
 ice_df2000 = decades(ice_df,dates[0],dates[1])
 ice_df2010 = decades(ice_df,dates[1],dates[2])
@@ -91,7 +94,7 @@ mtmp = mtmp.sort_index()
 
 #------------------------------main csv-------------------------------------#
 for county in county_names:
-    df.loc[county,'County'] = mtmp.loc[county,'county_name']
+    df.loc[county,'County_low'] = mtmp.loc[county,'county_name']
     df.loc[county,'DMG2000'] = ice_df2000.loc[county,'DMG']
     df.loc[county,'DMGCP2000'] = ice_df2000.loc[county,'DMGCPI']
     df.loc[county,'COUNT2000'] = ice_df2000.loc[county,'COUNT']
@@ -130,6 +133,10 @@ df['DPC2000'] = df['DMGPOP2000'] / df['COUNT2000']
 df['DPC2010'] = df['DMGPOP2010'] / df['COUNT2010']
 df['DPC2020'] = df['DMGPOP2020'] / df['COUNT2020']
 
+# for county in county_names:
+#     if pd.isna(new_df1.loc[county, 'COUNT']):
+#             new_df1.loc[county, 'COUNT'] = 0
+
 df.to_csv(dir+'\\'+file_save_name+'.csv',index=True)
 
 cols = ['DMG', 'DMGCPI', 'DMG2000', 'DMGCP2000', 'COUNT2000',
@@ -146,6 +153,6 @@ scaled_df = pd.DataFrame(scaled_data, columns=cols, index=df.index)
 
 for county in county_names:
     scaled_df.loc[county,'FIPS'] = df.loc[county,'FIPS']
-    scaled_df.loc[county,'County'] = df.loc[county,'County']
+    scaled_df.loc[county,'County_low'] = df.loc[county,'County_low']
 
 scaled_df.to_csv(dir+'\\'+file_save_name+'_scaled.csv',index=True)
