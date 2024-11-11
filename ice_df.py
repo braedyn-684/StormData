@@ -107,12 +107,15 @@ for county in county_names:
     df.loc[county,'POP2000'] = demo.loc[county,'POP2000']
     df.loc[county,'PNW2000'] = demo.loc[county,'PNW2000']
     df.loc[county,'MICPI2000'] = demo.loc[county,'MICPI2000']
+    df.loc[county,'MGRCP2000'] = demo.loc[county,'MGRCP2000']
     df.loc[county,'POP2010'] = demo.loc[county,'POP2010']
     df.loc[county,'PNW2010'] = demo.loc[county,'PNW2010']
     df.loc[county,'MICPI2010'] = demo.loc[county,'MICPI2010']
+    df.loc[county,'MGRCP2010'] = demo.loc[county,'MGRCP2010']
     df.loc[county,'POP2020'] = demo.loc[county,'POP2020']
     df.loc[county,'PNW2020'] = demo.loc[county,'PNW2020']
     df.loc[county,'MICPI2020'] = demo.loc[county,'MICPI2020']
+    df.loc[county,'MGRCP2020'] = demo.loc[county,'MGRCP2020']
     df.loc[county,'AGPER'] = lulc.loc[county,'AGPER']
     df.loc[county,'FORPER'] = lulc.loc[county,'FORPER']
     df.loc[county,'URBPER'] = lulc.loc[county,'URBPER']
@@ -126,7 +129,7 @@ for county in county_names:
     df.loc[county,'PCP2020'] = mtmp.loc[county,'mean precip (2020)']
 
 df['DMGPOP2000'] = df['DMGCP2000'] / df['POP2000']  
-df['DMGPOP2010'] = df['DMGCP2010'] / df['POP2000']  
+df['DMGPOP2010'] = df['DMGCP2010'] / df['POP2010']  
 df['DMGPOP2020'] = df['DMGCP2020'] / df['POP2020']  
 
 df['DPC2000'] = df['DMGPOP2000'] / df['COUNT2000']
@@ -141,8 +144,8 @@ df.to_csv(dir+'\\'+file_save_name+'.csv',index=True)
 
 cols = ['DMG', 'DMGCPI', 'DMG2000', 'DMGCP2000', 'COUNT2000',
        'DMG2010', 'DMGCP2010', 'COUNT2010', 'DMG2020', 'DMGCP2020',
-       'COUNT2020', 'POP2000', 'PNW2000', 'MICPI2000', 'POP2010', 'PNW2010',
-       'MICPI2010', 'POP2020', 'PNW2020', 'MICPI2020', 'AGPER', 'FORPER',
+       'COUNT2020', 'POP2000', 'PNW2000', 'MICPI2000', 'MGRCP2000', 'POP2010', 'PNW2010',
+       'MICPI2010', 'MGRCP2010', 'POP2020', 'PNW2020', 'MICPI2020', 'MGRCP2020', 'AGPER', 'FORPER',
        'URBPER', 'WATPER', 'ELEV', 'TMP2000', 'PCP2000', 'TMP2010', 'PCP2010',
        'TMP2020', 'PCP2020', 'DMGPOP2000', 'DMGPOP2010', 'DMGPOP2020',
        'DPC2000', 'DPC2010', 'DPC2020']

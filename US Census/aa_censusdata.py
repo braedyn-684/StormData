@@ -35,7 +35,7 @@ for i in range(len(years)):
         df.loc['        Some Other Race alone',county] +\
         df.loc['    Population of two or more races:',county]
 
-        df_.loc[county,'PNW'+years[i]] = round(non_white * 100 / df_.loc[county,'POP'+years[i]], 2)
+        df_.loc[county,'PNW'+years[i]] = non_white * 100 / df_.loc[county,'POP'+years[i]]
 
 cpi = pd.read_csv(dir+'\\CPI adjustments.csv')
 cpi = cpi.set_index('Year')
@@ -52,8 +52,19 @@ for i in range(len(years)):
         name = 'MINC'+years[i]
         df_.loc[county,name] = df.loc['Median income (dollars)',county]
         name_inf = 'MICPI'+years[i]
-        df_.loc[county,name_inf] = round(df.loc['Median income (dollars)',county]*\
-                    (cpi.loc[2024,'Annual'] / cpi.loc[int(years[i]),'Annual']), 0)
+        df_.loc[county,name_inf] = df.loc['Median income (dollars)',county]*\
+                    (cpi.loc[2024,'Annual'] / cpi.loc[int(years[i]),'Annual'])
+
+
+for i in range(len(years)):
+    df = pd.read_csv(dir+'\\US Census/'+years[i]+' Median Gross Rent fixed.csv')
+    df = df.set_index('COUNTY')
+    name = 'MGR'+years[i]
+    name_inf = 'MGRCP'+years[i]
+    for county in county_names:
+        df_.loc[county,name] = df.loc[county,'Median gross rent']
+        df_.loc[county,name_inf] = df.loc[county, 'Median gross rent']*\
+                    (cpi.loc[2024,'Annual'] / cpi.loc[int(years[i]),'Annual'])
 
 
 

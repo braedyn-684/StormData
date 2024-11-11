@@ -1,0 +1,6 @@
+https://data.census.gov/table/DECENNIALSF32000.H063?q=gross%20rent%202000&g=040XX00US05$0500000&tp=true
+DEC 2000 Summary median gross rent
+https://data.census.gov/table/ACSDT5Y2010.B25064?q=gross%20rent%202010&g=040XX00US05$0500000&moe=false&tp=true
+2010 ACS 5-year summary median gross rent
+https://data.census.gov/table/ACSDT5Y2020.B25064?q=gross%20rent%202020&g=040XX00US05$0500000&moe=false&tp=true
+2020 ACS 5-year summary median gross rent
