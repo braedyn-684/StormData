@@ -26,7 +26,15 @@ ice_df['END_DATE_TIME'] = pd.to_datetime(ice_df['END_DATE_TIME'])
 ice_df.rename(columns={'CZ_NAME': 'COUNTY',
                        'DAMAGE_PROPERTY':'DMG',
                        'DAMAGE_PROPERTY_CPI':'DMGCPI',
+                       'INJURIES_DIRECT': 'DIRINJ',
+                       'INJURIES_INDIRECT':'INDINJ',
+                       'DEATHS_DIRECT':'DIRDTH',
+                       'DEATHS_INDIRECT':'INDDTH',
                        'CZ_FIPS':'FIPS'}, inplace=True)
+
+ice_df['TOTINJ'] = ice_df['DIRINJ'] + ice_df['INDINJ']
+ice_df['TOTDTH'] = ice_df['DIRDTH'] + ice_df['INDDTH']
+
 dates = [datetime(1995,6,30), datetime(2005,6,30), datetime(2015,6,30), datetime(2025,6,30)]
 date_name = ['2000','2010','2020']
 
@@ -40,6 +48,8 @@ def decades(input_df,date1,date2):
         'FIPS': 'first',
         'DMG': 'sum',
         'DMGCPI': 'sum',
+        'TOTINJ': 'sum',
+        'TOTDTH': 'sum'
      }).reset_index()
     new_df1 = new_df1.sort_values(by='COUNTY')
     counties = new_df1['COUNTY']
@@ -72,21 +82,21 @@ demo = demo.set_index('COUNTY')
 demo = demo.sort_index()
 
 #------------------------------LULC-----------------------------------------#
-lulc = pd.read_csv(dir+'\\Arkansas_LandCover_Percents.csv')
+lulc = pd.read_csv(dir+'\\Land Cover\\Arkansas_LandCover_Percents.csv')
 for i in range(len(lulc)):
     lulc.loc[i,'COUNTY'] = lulc.loc[i,'COUNTY'].upper()
 lulc = lulc.set_index('COUNTY')
 lulc = lulc.sort_index()
 
 #------------------------------ELEVATION------------------------------------#
-elev = pd.read_csv(dir+'\\Arkansas_Mean_Elevation.csv')
+elev = pd.read_csv(dir+'\\Land Cover\\Arkansas_Mean_Elevation.csv')
 for i in range(len(elev)):
     elev.loc[i,'COUNTY'] = elev.loc[i,'NAME'].upper()
 elev = elev.set_index('COUNTY')
 elev = elev.sort_index()
 
 #---------------------------------WEATHER-----------------------------------#
-mtmp = pd.read_csv(dir+'\\Arkansas_Monthly_Mean_Temps_and_Precip_by_County.csv')
+mtmp = pd.read_csv(dir+'\\Precip and Temp\\Arkansas_Monthly_Mean_Temps_and_Precip_by_County.csv')
 for i in range(len(mtmp)):
     mtmp.loc[i,'COUNTY'] = mtmp.loc[i,'county_name'].upper()
 mtmp = mtmp.set_index('COUNTY')
@@ -95,6 +105,15 @@ mtmp = mtmp.sort_index()
 #------------------------------main csv-------------------------------------#
 for county in county_names:
     df.loc[county,'County_low'] = mtmp.loc[county,'county_name']
+    df.loc[county,'DMG'] = ice_dfall.loc[county,'DMG']
+    df.loc[county,'INJ'] = ice_dfall.loc[county,'TOTINJ']
+    df.loc[county,'DTH'] = ice_dfall.loc[county,'TOTDTH']
+    df.loc[county,'INJ2000'] = ice_df2000.loc[county,'TOTINJ']
+    df.loc[county,'DTH2000'] = ice_df2000.loc[county,'TOTDTH']
+    df.loc[county,'INJ2010'] = ice_df2010.loc[county,'TOTINJ']
+    df.loc[county,'DTH2010'] = ice_df2010.loc[county,'TOTDTH']
+    df.loc[county,'INJ2020'] = ice_df2020.loc[county,'TOTINJ']
+    df.loc[county,'DTH2020'] = ice_df2020.loc[county,'TOTDTH']
     df.loc[county,'DMG2000'] = ice_df2000.loc[county,'DMG']
     df.loc[county,'DMGCP2000'] = ice_df2000.loc[county,'DMGCPI']
     df.loc[county,'COUNT2000'] = ice_df2000.loc[county,'COUNT']

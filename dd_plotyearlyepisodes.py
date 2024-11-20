@@ -34,7 +34,7 @@ plt.xlabel('p-value={:.3f}   R2={:.1f}   slope={:.3f}'.format(p,r,slope))
 
 plt.tight_layout()
 # plt.show()
-plt.savefig(dir+'\\Yearly bar plots.png')
+plt.savefig(dir+'\\Images\\Yearly bar plots.png')
 
 
 
@@ -59,4 +59,4 @@ plt.xlabel('p-value={:.3f}   R2={:.1f}   slope={:.3f}'.format(p,r,slope))
 
 plt.tight_layout()
 # plt.show()
-plt.savefig(dir+'\\Yearly bar plots dmg.png')
+plt.savefig(dir+'\\Images\\Yearly bar plots dmg.png')

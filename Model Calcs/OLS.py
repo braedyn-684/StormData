@@ -4,11 +4,13 @@ import os
 import statsmodels.api as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 dir = os.path.dirname(os.path.abspath(__file__))
-df = pd.read_csv(dir+'\\Case_Study_Jan_2009\\jan2009_scaled.csv')
+df = pd.read_csv(dir+'\\master_scaled.csv')
 
-Y = df['DMGPOP2010']
-X = df[['MGRCP2010','PNW2010','MICPI2010','AGPER','FORPER','URBPER','WATPER','ELEV','TMP2010','PCP2010']]
-X = df[['MICPI2010','FORPER','ELEV','TMP2010','PCP2010']]
+Y = df['DMGPOP2020']
+# X = df[['MGRCP2020','PNW2020','MICPI2020','AGPER','FORPER','URBPER','WATPER','ELEV','TMP2020','PCP2020']]
+# X = df[['ELEV','TMP2000']]
+# X = df[['AGPER','FORPER','URBPER','ELEV','PCP2010']]
+X = df[['AGPER','FORPER','ELEV','TMP2020']]
 
 X = sm.add_constant(X)
 model = sm.OLS(Y,X).fit()

@@ -20,7 +20,7 @@ for event in event_types:
     plt.xticks(rotation=45)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.savefig(dir+'\\Monthly bar plots for '+event+'.png')
+    plt.savefig(dir+'\\Images\\Monthly bar plots for '+event+'.png')
 
 
 
@@ -33,4 +33,4 @@ plt.title('Number of winter-related events by month in AR (1996-2024)')
 plt.xticks(rotation=45)
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
-plt.savefig(dir+'\\Monthly bar plots.png')
+plt.savefig(dir+'\\Images\\Monthly bar plots.png')

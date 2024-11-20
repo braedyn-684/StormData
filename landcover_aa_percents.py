@@ -41,7 +41,7 @@ COLS = ['Ag','AGPER','For','FORPER','Urb','URBPER','Wat','WATPER','Total']
 df2 = pd.DataFrame(columns=COLS, index=df.index)
 df2['Total'] = df['Total']
 df2['Ag'] = df['Pasture/hay']+df['Cultivated crops']
-df2['For'] = df['Deciduous forest']+df['Evergreen forest']+df['Mixed forest']
+df2['For'] = df['Deciduous forest']# +df['Evergreen forest']+df['Mixed forest']
 df2['Urb'] = df['Developed, open']+df['Developed, low']+df['Developed, medium']+df['Developed, high']
 df2['Wat'] = df['Open water']
 
@@ -50,4 +50,4 @@ df2['FORPER'] = (df2['For']/df['Total'])*100
 df2['URBPER'] = (df2['Urb']/df['Total'])*100
 df2['WATPER'] = (df2['Wat']/df['Total'])*100
 
-df2.to_csv(dir+'\\Arkansas_LandCover_Percents.csv')
+df2.to_csv(dir+'\\Land Cover\\Arkansas_LandCover_Percents.csv')

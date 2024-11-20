@@ -33,7 +33,7 @@ xticks = ax[2].get_xticks()
 ax[2].set_xticklabels([f'${x/1e3:.0f}K' for x in xticks])
 plt.tight_layout()
 # plt.show()
-plt.savefig(dir+'\\Histograms of damage.png')
+plt.savefig(dir+'\\Images\\Histograms of damage.png')
 
 # import scipy.stats as stats
 # stats.probplot(df['DMGCP2010'], dist="norm", plot=plt)

@@ -50,6 +50,6 @@ plt.xticks(rotation=0)
 plt.xlabel('')
 yticks = ax1.get_yticks()
 ax1.set_yticklabels([f'${y/1e6:.0f}M' for y in yticks])
-plt.savefig(dir+'\\Damage by weekday bar plots.png')
+plt.savefig(dir+'\\Images\\Damage by weekday bar plots.png')
 
 # print(weekdays)

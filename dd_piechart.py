@@ -27,4 +27,4 @@ plt.show()
 
 plt.pie(costs, labels=event_types,colors=color, autopct='%1.1f%%')
 plt.title('Property damage ($ - CPI Adjusted)')
-plt.savefig(dir+'\\Pie chart damages.png')
+plt.savefig(dir+'\\Images\\Pie chart damages.png')
