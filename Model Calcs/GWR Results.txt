@@ -1,0 +1,55 @@
+2000 GWR
+Number of Neighbors	AICc
+30	205.6068
+75	209.4021
+47	206.4681
+58	207.4656
+41	205.5202
+37	206.1605
+43	205.8600
+39	205.6766
+42	205.3122
+WARNING 110259: At least one local regression had very limited variation after applying the weights. Use caution when interpreting the results.
+Analysis Details
+Number of Features	75
+Dependent Variable	DMGPOP2000
+Explanatory Variables	ELEV
+TMP2000
+Number of Neighbors	42
+Model Diagnostics
+R2	0.3241
+AdjR2	0.2092
+AICc	205.3122
+Sigma-Squared	0.7890
+Sigma-Squared MLE	0.6759
+Effective Degrees of Freedom	64.2540
+Adjusted Critical Value of Pseudo-t Statistics	2.4230
+
+2010 GR
+Number of Neighbors	AICc
+30	176.7476
+75	171.3785
+47	172.6108
+58	171.1216
+64	171.2930
+54	170.9371
+51	171.3284
+55	171.3551
+WARNING 110306: The final model didn't have the lowest AICc encountered in the Golden Search Results.
+Analysis Details
+Number of Features	75
+Dependent Variable	DMGPOP2010
+Explanatory Variables	AGPER
+FORPER
+URBPER
+ELEV
+PCP2010
+Number of Neighbors	55
+Model Diagnostics
+R2	0.6328
+AdjR2	0.5342
+AICc	171.3551
+Sigma-Squared	0.4641
+Sigma-Squared MLE	0.3672
+Effective Degrees of Freedom	59.3436
+Adjusted Critical Value of Pseudo-t Statistics	2.3065

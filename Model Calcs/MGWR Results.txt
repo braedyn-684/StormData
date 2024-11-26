@@ -1,0 +1,134 @@
+MGWR Results
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2000
+Explanatory Variables	Mean	Standard Deviation	Minimum		Median		Maximum
+Intercept		-0.1951	0.2183			-0.4500		-0.2653		0.5186
+ELEV			0.1908	0.2566			-0.0140		0.0280		0.7521
+TMP2000			0.3833	0.4452			-0.0276		0.1391		1.6061
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Model Diagnostics
+Statistic			GWR		MGWR
+R-Squared			0.3241		0.4461
+Adjusted R-Squared		0.2092		0.3551
+AICc				205.3122	195.9509
+Sigma-Squared			0.7890		0.6435
+Sigma-Squared MLE		0.6759		0.5539
+Effective Degrees of Freedom	64.2540		64.5665
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Optimal GWR Bandwidth: 42 (K nearest neighbors).
+Summary of Explanatory Variables and Neighborhoods
+Explanatory Variables	Neighbors (% of Features)a	Significance (% of Features)b
+Intercept		30 (40.00)			0 (0.00)
+ELEV			47 (62.67)			0 (0.00)
+TMP2000			30 (40.00)			9 (12.00)
+a: This number in the parenthesis ranges from 0 to 100%, and can be interpreted as a local, regional, global scale based on the geographical context from low to high.
+b: In the parentheses, the percentage of features that have significant coefficients of an explanatory variable.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Optimal Bandwidths Search History
+Iterations	Intercept	ELEV	TMP2000	AICc
+0		42		42	42	205.3122
+1		30		47	30	195.9509
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Bandwidth Statistics Summary
+Explanatory Variables	Optimal Number of Neighbors	Effective Number of Parameters	Adjusted Value of Alpha		Adjusted Critical Value of Pseudo-t Statistics
+Intercept		30				3.24				0.0154				2.4880
+ELEV			47				2.73				0.0183				2.4200
+TMP2000			30				4.47				0.0112				2.6118
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2010 Results - number of neighbors, golden search, bisquare
+ExpVar		Mean	StdDv	Min	Med	Max
+Intercept	0.0752	0.0157	0.0383	0.0794	0.1064
+AGPER		-0.0750	0.0132	-0.0982	-0.0759	-0.0493
+FORPER		0.6479	0.3764	0.2129	0.4355	1.3287
+URBPER		-0.2857	0.2318	-1.2406	-0.1794	-0.0747
+ELEV		-0.3363	0.4339	-1.1016	-0.1463	0.1264
+PCP2010		-0.4946	0.0303	-0.5462	-0.5027	-0.4373
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Model Diagnostics
+Statistic			GWR		MGWR
+R-Squared			0.6380		0.7229
+Adjusted R-Squared		0.5386		0.6461
+AICc				170.9371	161.5262
+Sigma-Squared			0.4598		0.3526
+Sigma-Squared MLE		0.3620		0.2771
+Effective Degrees of Freedom	59.0485		58.9380
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Optimal GWR Bandwidth: 54 (K nearest neighbors).
+Summary of Explanatory Variables and Neighborhoods
+Explanatory Variables	Neighbors (% of Features)a	Significance (% of Features)b
+Intercept		75 (100.00)			0 (0.00)
+AGPER			75 (100.00)			0 (0.00)
+FORPER			30 (40.00)			34 (45.33)
+URBPER			30 (40.00)			21 (28.00)
+ELEV			30 (40.00)			23 (30.67)
+PCP2010			75 (100.00)			75 (100.00)
+a: This number in the parenthesis ranges from 0 to 100%, and can be interpreted as a local, regional, global scale based on the geographical context from low to high.
+b: In the parentheses, the percentage of features that have significant coefficients of an explanatory variable.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Optimal Bandwidths Search History
+Iterations	Intercept	AGPER	FORPER	URBPER	ELEV	PCP2010	AICc
+0		54		54	54	54	54	54	170.9371
+1		54		75	30	30	32	64	164.3011
+2		75		75	30	30	30	75	161.5450
+3		75		75	30	30	30	75	161.5262
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Bandwidth Statistics Summary
+Explanatory Variables	Optimal Number of Neighbors	Effective Number of Parameters	Adjusted Value of Alpha	Adjusted Critical Value of Pseudo-t Statistics
+Intercept	75	1.24				0.0404				2.0957
+AGPER		75	1.36				0.0367				2.1382
+FORPER		30	3.86				0.0130				2.5625
+URBPER		30	4.27				0.0117				2.6019
+ELEV		30	3.90				0.0128				2.5665
+PCP2010		75	1.44				0.0348				2.1609
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2010 Results - distance, golden search, bisquare
+Summary Statistics for Coefficients Estimates
+Explanatory Variables	Mean	Standard Deviation	Minimum	Median	Maximum
+Intercept	0.1392	0.0073	0.1236	0.1396	0.1527
+AGPER	-0.1797	0.0036	-0.1876	-0.1795	-0.1737
+FORPER	0.9078	0.0057	0.8967	0.9080	0.9209
+URBPER	-0.2895	0.0106	-0.3140	-0.2898	-0.2667
+ELEV	-0.6134	0.1780	-0.9454	-0.5856	-0.1874
+PCP2010	-0.5077	0.0138	-0.5394	-0.5069	-0.4812
+Model Diagnostics
+Statistic	GWR	MGWR
+R-Squared	0.5893	0.5780
+Adjusted R-Squared	0.5115	0.5237
+AICc	171.5337	170.0744
+Sigma-Squared	0.4873	0.4755
+Sigma-Squared MLE	0.4107	0.4220
+Effective Degrees of Freedom	63.2180	66.5574
+Optimal GWR Bandwidth: 327977.41 meters (Distance).
+Summary of Explanatory Variables and Neighborhoods
+Explanatory Variables	Distance Band (% of Extent)a	Significance (% of Features)b
+Intercept	523618.02 (100.00)	0 (0.00)
+AGPER	523618.02 (100.00)	0 (0.00)
+FORPER	523618.02 (100.00)	75 (100.00)
+URBPER	523618.02 (100.00)	75 (100.00)
+ELEV	247369.05 (47.24)	48 (64.00)
+PCP2010	523618.02 (100.00)	75 (100.00)
+Distance Unit: meters
+a: This number in the parenthesis ranges from 0 to 100%, and can be interpreted as a local, regional, global scale based on the geographical context from low to high.
+b: In the parentheses, the percentage of features that have significant coefficients of an explanatory variable.
+Optimal Bandwidths Search History
+Iterations	Intercept	AGPER	FORPER	URBPER	ELEV	PCP2010	AICc
+0	327977.41	327977.41	327977.41	327977.41	327977.41	327977.41	171.5337
+1	523618.02	523618.02	247369.05	523618.02	262763.88	523618.02	170.1551
+2	523618.02	523618.02	523618.02	523618.02	247369.05	523618.02	170.2219
+3	523618.02	523618.02	523618.02	523618.02	247369.05	523618.02	170.0744
+Distance Unit: meters
+Bandwidth Statistics Summary
+Explanatory Variables	Optimal Distance Bandwidth	Effective Number of Parameters	Adjusted Value of Alpha	Adjusted Critical Value of Pseudo-t Statistics
+Intercept		523618.02			1.11				0.0451	2.0418
+AGPER			523618.02			1.18	0.0423	2.0707
+FORPER			523618.02			1.10	0.0453	2.0398
+URBPER			523618.02			1.21	0.0413	2.0804
+ELEV			247369.05			2.66	0.0188	2.4084
+PCP2010			523618.02			1.18	0.0424	2.0695

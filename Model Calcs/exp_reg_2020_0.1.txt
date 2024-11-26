@@ -1,0 +1,97 @@
+Choose 1 of 11 Summary
+Passing Models
+AdjR2		AICc		JB		K(BP)		VIF		SA	Model
+0.048702	214.413813	0.000000	0.010872	1.000000	N/A	+TMP2020*
+0.044361	214.755244	0.000000	0.023557	1.000000	N/A	-SNW2020*
+0.031958	215.722408	0.000000	0.098154	1.000000	N/A	+PCP2020*
+Choose 2 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+0.087134	212.519813	0.000000	0.010282	2.685734	N/A	+ELEV*** +TMP2020**
+0.082566	212.894206	0.000000	0.008883	3.385819	N/A	+FORPER** +TMP2020**
+0.070738	213.854924	0.000000	0.039952	3.309610	N/A	+FORPER** -SNW2020**
+0.068158	214.062921	0.000000	0.046615	2.392128	N/A	+ELEV** -SNW2020***
+Choose 3 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+0.180554	205.671943	0.000000	0.000449	6.827008	N/A	+AGPER* +FORPER** +TMP2020**
+0.174095	206.260835	0.000000	0.001210	4.915344	N/A	+AGPER** +ELEV*** +TMP2020***
+0.110054	211.861900	0.000000	0.008450	5.176886	N/A	+AGPER* +FORPER** -SNW2020**
+0.096672	212.981260	0.000000	0.023290	3.449095	N/A	+AGPER* +ELEV*** -SNW2020**
+Choose 4 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+0.246990	200.632626	0.000000	0.000074	7.609671	N/A	+AGPER** +FORPER** +ELEV*** +TMP2020***
+0.118135	212.479655	0.000000	0.011120	6.968890	N/A	+AGPER* +FORPER* +ELEV* -SNW2020**
+Choose 5 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+Choose 6 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+Choose 7 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+Choose 8 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+Choose 9 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+Choose 10 of 11 Summary
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+Choose 11 of 11 Summary
+Highest Adjusted R-Squared Results
+Passing Models
+AdjR2	AICc	JB	K(BP)	VIF	SA	Model
+
+
+Exploratory Regression Global Summary (DMGPOP2020)
+Percentage of Search Criteria Passed
+Search Criterion	Cutoff	Trials	# Passed	% Passed
+Min Adjusted R-Squared	> 0.00	2047	1830	89.40
+Max Coefficient p-value	< 0.10	2047	13	0.64
+Max VIF Value	< 10.00	2047	1476	72.11
+Min Jarque-Bera p-value	> 0.00	2047	2047	100.00
+Min Spatial Autocorrelation p-value	> 0.00	37	37	100.00
+Summary of Variable Significance
+Variable	% Significant	% Negative	% Positive
+ELEV	65.33	3.12	96.88
+FORPER	57.81	8.50	91.50
+AGPER	56.05	6.25	93.75
+TMP2020	43.46	0.00	100.00
+SNW2020	33.01	83.89	16.11
+PCP2020	18.36	9.86	90.14
+PNW2020	6.35	15.82	84.18
+WATPER	3.81	0.00	100.00
+MICPI2020	0.00	76.66	23.34
+MGRCP2020	0.00	58.20	41.80
+URBPER	0.00	88.57	11.43
+Summary of Multicollinearity
+Variable	VIF	Violations	Covariates
+PNW2020	3.56	0	--------
+MICPI2020	2.82	0	--------
+MGRCP2020	3.21	0	--------
+AGPER	3.86	0	--------
+FORPER	9.00	0	--------
+URBPER	3.41	0	--------
+WATPER	1.49	0	--------
+ELEV	6.85	0	--------
+TMP2020	22.20	518	SNW2020 (79.53)
+PCP2020	4.63	0	--------
+SNW2020	15.70	461	TMP2020 (79.53)
+Summary of Residual Normality (JB)
+JB	AdjR2	AICc	K(BP)	VIF	SA	Model
+0.000000	-0.011139	218.989165	0.786990	1.000000	N/A	-MGRCP2020
+0.000000	-0.004700	218.510031	0.265288	1.000000	N/A	-MICPI2020
+0.000000	0.042954	214.865629	0.004486	1.000000	N/A	+PNW2020
+Table Abbreviations
+AdjR2	Adjusted R-Squared
+AICc	Akaike's Information Criterion
+JB	Jarque-Bera p-value
+K(BP)	Koenker (BP) Statistic p-value
+VIF	Max Variance Inflation Factor
+SA	Global Moran's I p-value
+Model	Variable sign (+/-)
+Model	Variable significance (* = 0.10; ** = 0.05; *** = 0.01)

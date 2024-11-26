@@ -82,11 +82,23 @@ demo = demo.set_index('COUNTY')
 demo = demo.sort_index()
 
 #------------------------------LULC-----------------------------------------#
-lulc = pd.read_csv(dir+'\\Land Cover\\Arkansas_LandCover_Percents.csv')
-for i in range(len(lulc)):
-    lulc.loc[i,'COUNTY'] = lulc.loc[i,'COUNTY'].upper()
-lulc = lulc.set_index('COUNTY')
-lulc = lulc.sort_index()
+lulc2001 = pd.read_csv(dir+'\\Land Cover\\Arkansas_LandCover_Percents_01.csv')
+for i in range(len(lulc2001)):
+    lulc2001.loc[i,'COUNTY'] = lulc2001.loc[i,'COUNTY'].upper()
+lulc2001 = lulc2001.set_index('COUNTY')
+lulc2001 = lulc2001.sort_index()
+
+lulc2011 = pd.read_csv(dir+'\\Land Cover\\Arkansas_LandCover_Percents_11.csv')
+for i in range(len(lulc2011)):
+    lulc2011.loc[i,'COUNTY'] = lulc2011.loc[i,'COUNTY'].upper()
+lulc2011 = lulc2011.set_index('COUNTY')
+lulc2011 = lulc2011.sort_index()
+
+lulc2021 = pd.read_csv(dir+'\\Land Cover\\Arkansas_LandCover_Percents_21.csv')
+for i in range(len(lulc2021)):
+    lulc2021.loc[i,'COUNTY'] = lulc2021.loc[i,'COUNTY'].upper()
+lulc2021 = lulc2021.set_index('COUNTY')
+lulc2021 = lulc2021.sort_index()
 
 #------------------------------ELEVATION------------------------------------#
 elev = pd.read_csv(dir+'\\Land Cover\\Arkansas_Mean_Elevation.csv')
@@ -96,7 +108,7 @@ elev = elev.set_index('COUNTY')
 elev = elev.sort_index()
 
 #---------------------------------WEATHER-----------------------------------#
-mtmp = pd.read_csv(dir+'\\Precip and Temp\\Arkansas_Monthly_Mean_Temps_and_Precip_by_County.csv')
+mtmp = pd.read_csv(dir+'\\Precip and Temp\\Arkansas_Monthly_Mean_Temps_and_Precip_and_Snow_by_County.csv')
 for i in range(len(mtmp)):
     mtmp.loc[i,'COUNTY'] = mtmp.loc[i,'county_name'].upper()
 mtmp = mtmp.set_index('COUNTY')
@@ -135,17 +147,28 @@ for county in county_names:
     df.loc[county,'PNW2020'] = demo.loc[county,'PNW2020']
     df.loc[county,'MICPI2020'] = demo.loc[county,'MICPI2020']
     df.loc[county,'MGRCP2020'] = demo.loc[county,'MGRCP2020']
-    df.loc[county,'AGPER'] = lulc.loc[county,'AGPER']
-    df.loc[county,'FORPER'] = lulc.loc[county,'FORPER']
-    df.loc[county,'URBPER'] = lulc.loc[county,'URBPER']
-    df.loc[county,'WATPER'] = lulc.loc[county,'WATPER']
+    df.loc[county,'AG01'] = lulc2001.loc[county,'AG01']
+    df.loc[county,'FOR01'] = lulc2001.loc[county,'FOR01']
+    df.loc[county,'URB01'] = lulc2001.loc[county,'URB01']
+    df.loc[county,'WAT01'] = lulc2001.loc[county,'WAT01']
+    df.loc[county,'AG11'] = lulc2011.loc[county,'AG11']
+    df.loc[county,'FOR11'] = lulc2011.loc[county,'FOR11']
+    df.loc[county,'URB11'] = lulc2011.loc[county,'URB11']
+    df.loc[county,'WAT11'] = lulc2011.loc[county,'WAT11']
+    df.loc[county,'AG21'] = lulc2021.loc[county,'AG21']
+    df.loc[county,'FOR21'] = lulc2021.loc[county,'FOR21']
+    df.loc[county,'URB21'] = lulc2021.loc[county,'URB21']
+    df.loc[county,'WAT21'] = lulc2021.loc[county,'WAT21']
     df.loc[county,'ELEV'] = elev.loc[county,'mean']
     df.loc[county,'TMP2000'] = mtmp.loc[county,'mean temp (2000)']
     df.loc[county,'PCP2000'] = mtmp.loc[county,'mean precip (2000)']
+    df.loc[county,'SNW2000'] = mtmp.loc[county,'mean snow (2000)']
     df.loc[county,'TMP2010'] = mtmp.loc[county,'mean temp (2010)']
     df.loc[county,'PCP2010'] = mtmp.loc[county,'mean precip (2010)']
+    df.loc[county,'SNW2010'] = mtmp.loc[county,'mean snow (2010)']
     df.loc[county,'TMP2020'] = mtmp.loc[county,'mean temp (2020)']
     df.loc[county,'PCP2020'] = mtmp.loc[county,'mean precip (2020)']
+    df.loc[county,'SNW2020'] = mtmp.loc[county,'mean snow (2020)']
 
 df['DMGPOP2000'] = df['DMGCP2000'] / df['POP2000']  
 df['DMGPOP2010'] = df['DMGCP2010'] / df['POP2010']  
@@ -164,9 +187,10 @@ df.to_csv(dir+'\\'+file_save_name+'.csv',index=True)
 cols = ['DMG', 'DMGCPI', 'DMG2000', 'DMGCP2000', 'COUNT2000',
        'DMG2010', 'DMGCP2010', 'COUNT2010', 'DMG2020', 'DMGCP2020',
        'COUNT2020', 'POP2000', 'PNW2000', 'MICPI2000', 'MGRCP2000', 'POP2010', 'PNW2010',
-       'MICPI2010', 'MGRCP2010', 'POP2020', 'PNW2020', 'MICPI2020', 'MGRCP2020', 'AGPER', 'FORPER',
-       'URBPER', 'WATPER', 'ELEV', 'TMP2000', 'PCP2000', 'TMP2010', 'PCP2010',
-       'TMP2020', 'PCP2020', 'DMGPOP2000', 'DMGPOP2010', 'DMGPOP2020',
+       'MICPI2010', 'MGRCP2010', 'POP2020', 'PNW2020', 'MICPI2020', 'MGRCP2020', 
+       'AG01', 'FOR01','URB01', 'WAT01', 'AG11', 'FOR11','URB11', 'WAT11', 'AG21', 'FOR21','URB21', 'WAT21', 
+       'ELEV', 'TMP2000', 'PCP2000', 'SNW2000', 'TMP2010', 'PCP2010',
+       'SNW2010','TMP2020', 'PCP2020','SNW2020','DMGPOP2000', 'DMGPOP2010', 'DMGPOP2020',
        'DPC2000', 'DPC2010', 'DPC2020']
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
