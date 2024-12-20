@@ -19,12 +19,12 @@ funding_filtered = funding_by_type[["Heavy Snow", "Winter Storm", "Winter Weathe
 
 costs = funding_filtered.tolist()
 
-plt.pie(counts, labels=event_types,colors=color, autopct='%1.1f%%')
-plt.title('Number of reports')
-plt.savefig(dir+'\\Pie chart counts.png')
-plt.show()
+plt.pie(counts,colors=color) #,labels=event_types,colors=color, autopct='%1.1f%%')
+# plt.title('Number of reports')
+plt.savefig(dir+'\\Images\\Pie chart counts.png')
+# plt.show()
 
 
-plt.pie(costs, labels=event_types,colors=color, autopct='%1.1f%%')
-plt.title('Property damage ($ - CPI Adjusted)')
+plt.pie(costs,colors=color, )#, labels=event_types,colors=color, autopct='%1.1f%%')
+# plt.title('Property damage ($ - CPI Adjusted)')
 plt.savefig(dir+'\\Images\\Pie chart damages.png')
