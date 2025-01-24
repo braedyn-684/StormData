@@ -5,7 +5,7 @@ from scipy.stats import linregress
 from datetime import datetime
 
 dir = os.path.dirname(os.path.abspath(__file__))
-df = pd.read_csv(dir+'\\Storm Data by Episode.csv')
+df = pd.read_csv(dir+'\\Storm Data by Episode Combined WFO.csv')
 cnty = pd.read_csv(dir+'\\countyGISdata.csv')
 
 df['BEGIN_DATE_TIME'] = pd.to_datetime(df['BEGIN_DATE_TIME'])
@@ -17,8 +17,6 @@ for i in range(len(df)):
     df.loc[i,'LENGTH_IN_HOURS'] = hourdiff
 
 fig, ax1 = plt.subplots(figsize = (5, 5))
-# filtered_df = df[df['DAMAGE_PROPERTY_CPI'] >= 0]
-# filtered_df = df[df['EVENT_TYPE'] == 'Ice Storm']
 
 slope, intercept, r, p, se = linregress(df['DAMAGE_PROPERTY_CPI'], df['LENGTH_IN_HOURS'])
 plt.grid()

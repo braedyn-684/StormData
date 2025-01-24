@@ -4,12 +4,12 @@ from datetime import datetime
 
 dir = os.path.dirname(os.path.abspath(__file__))
 df0 = pd.read_csv(dir+'\\Storm Data CPI.csv')
-ice_df = df0[df0['EVENT_TYPE']=="Ice Storm"]
-ice_df = ice_df.reset_index()
-file_save_name = 'master_ice'
-# event_types = ["Heavy Snow", "Winter Storm", "Winter Weather", "Ice Storm"]
-# ice_df = df0[df0['EVENT_TYPE'].isin(event_types)]
-# file_save_name = 'master'
+# ice_df = df0[df0['EVENT_TYPE']=="Ice Storm"]
+# ice_df = ice_df.reset_index()
+# file_save_name = 'master_ice'
+event_types = ["Heavy Snow", "Winter Storm", "Winter Weather", "Ice Storm"]
+ice_df = df0[df0['EVENT_TYPE'].isin(event_types)]
+file_save_name = 'master'
 
 df2 = pd.read_csv(dir+'\\Storm Data by County.csv')
 county_names = df2['COUNTY']
@@ -65,12 +65,12 @@ def decades(input_df,date1,date2):
     new_rows = pd.DataFrame(index=missing_counties, columns=new_df1.columns)
     new_df2 = pd.concat([new_df1, new_rows])
     for county in counties:
-        # new_df1.loc[county,'HS'] = result.loc[county,'Heavy Snow']
-        # new_df1.loc[county,'WS'] = result.loc[county,'Winter Storm']
-        # new_df1.loc[county,'WW'] = result.loc[county,'Winter Weather']
+        new_df2.loc[county,'HS'] = result.loc[county,'Heavy Snow']
+        new_df2.loc[county,'WS'] = result.loc[county,'Winter Storm']
+        new_df2.loc[county,'WW'] = result.loc[county,'Winter Weather']
         new_df2.loc[county,'IS'] = result.loc[county,'Ice Storm']
-        # new_df1.loc[county,'COUNT'] = new_df1.loc[county,'HS'] + new_df1.loc[county,'WS'] +\
-        #       new_df1.loc[county,'WW'] + new_df1.loc[county,'IS']
+        new_df2.loc[county,'COUNT'] = new_df2.loc[county,'HS'] + new_df2.loc[county,'WS'] +\
+              new_df2.loc[county,'WW'] + new_df2.loc[county,'IS']
     return new_df2
 ice_df2000 = decades(ice_df,dates[0],dates[1])
 ice_df2010 = decades(ice_df,dates[1],dates[2])
@@ -128,12 +128,12 @@ for county in county_names:
     df.loc[county,'DMG'] = ice_dfall.loc[county,'DMG']
     df.loc[county,'INJ'] = ice_dfall.loc[county,'TOTINJ']
     df.loc[county,'DTH'] = ice_dfall.loc[county,'TOTDTH']
-    # df.loc[county,'HS'] = ice_dfall.loc[county,'HS']
-    # df.loc[county,'WS'] = ice_dfall.loc[county,'WS']
-    # df.loc[county,'WW'] = ice_dfall.loc[county,'WW']
+    df.loc[county,'HS'] = ice_dfall.loc[county,'HS']
+    df.loc[county,'WS'] = ice_dfall.loc[county,'WS']
+    df.loc[county,'WW'] = ice_dfall.loc[county,'WW']
     df.loc[county,'IS'] = ice_dfall.loc[county,'IS']
     df.loc[county,'HOURS'] = ice_dfall.loc[county,'HOURS']
-    # df.loc[county,'COUNT'] = ice_dfall.loc[county,'COUNT']
+    df.loc[county,'COUNT'] = ice_dfall.loc[county,'COUNT']
     df.loc[county,'INJ2000'] = ice_df2000.loc[county,'TOTINJ']
     df.loc[county,'DTH2000'] = ice_df2000.loc[county,'TOTDTH']
     df.loc[county,'INJ2010'] = ice_df2010.loc[county,'TOTINJ']
@@ -142,26 +142,26 @@ for county in county_names:
     df.loc[county,'DTH2020'] = ice_df2020.loc[county,'TOTDTH']
     df.loc[county,'DMG2000'] = ice_df2000.loc[county,'DMG']
     df.loc[county,'DMGCP2000'] = ice_df2000.loc[county,'DMGCPI']
-    # df.loc[county,'COUNT2000'] = ice_df2000.loc[county,'COUNT']
-    # df.loc[county,'HS2000'] = ice_df2000.loc[county,'HS']
-    # df.loc[county,'WS2000'] = ice_df2000.loc[county,'WS']
-    # df.loc[county,'WW2000'] = ice_df2000.loc[county,'WW']
+    df.loc[county,'COUNT2000'] = ice_df2000.loc[county,'COUNT']
+    df.loc[county,'HS2000'] = ice_df2000.loc[county,'HS']
+    df.loc[county,'WS2000'] = ice_df2000.loc[county,'WS']
+    df.loc[county,'WW2000'] = ice_df2000.loc[county,'WW']
     df.loc[county,'IS2000'] = ice_df2000.loc[county,'IS']
     df.loc[county,'HOURS00'] = ice_df2000.loc[county,'HOURS']
     df.loc[county,'DMG2010'] = ice_df2010.loc[county,'DMG']
     df.loc[county,'DMGCP2010'] = ice_df2010.loc[county,'DMGCPI']
-    # df.loc[county,'COUNT2010'] = ice_df2010.loc[county,'COUNT']
-    # df.loc[county,'HS2010'] = ice_df2010.loc[county,'HS']
-    # df.loc[county,'WS2010'] = ice_df2010.loc[county,'WS']
-    # df.loc[county,'WW2010'] = ice_df2010.loc[county,'WW']
+    df.loc[county,'COUNT2010'] = ice_df2010.loc[county,'COUNT']
+    df.loc[county,'HS2010'] = ice_df2010.loc[county,'HS']
+    df.loc[county,'WS2010'] = ice_df2010.loc[county,'WS']
+    df.loc[county,'WW2010'] = ice_df2010.loc[county,'WW']
     df.loc[county,'IS2010'] = ice_df2010.loc[county,'IS']
     df.loc[county,'HOURS10'] = ice_df2010.loc[county,'HOURS']
     df.loc[county,'DMG2020'] = ice_df2020.loc[county,'DMG']
     df.loc[county,'DMGCP2020'] = ice_df2020.loc[county,'DMGCPI']
-    # df.loc[county,'COUNT2020'] = ice_df2020.loc[county,'COUNT']
-    # df.loc[county,'HS2020'] = ice_df2020.loc[county,'HS']
-    # df.loc[county,'WS2020'] = ice_df2020.loc[county,'WS']
-    # df.loc[county,'WW2020'] = ice_df2020.loc[county,'WW']
+    df.loc[county,'COUNT2020'] = ice_df2020.loc[county,'COUNT']
+    df.loc[county,'HS2020'] = ice_df2020.loc[county,'HS']
+    df.loc[county,'WS2020'] = ice_df2020.loc[county,'WS']
+    df.loc[county,'WW2020'] = ice_df2020.loc[county,'WW']
     df.loc[county,'IS2020'] = ice_df2020.loc[county,'IS']
     df.loc[county,'HOURS20'] = ice_df2020.loc[county,'HOURS']
     df.loc[county,'POP2000'] = demo.loc[county,'POP2000']
@@ -214,10 +214,10 @@ df['DMGPOP2020'] = df['DMGCP2020'] / df['POP2020']
 df.to_csv(dir+'\\'+file_save_name+'.csv',index=True)
 df = df.fillna(0)
 
-cols = ['DMG', 'DMGCPI', 
-       'DMG2000', 'DMGCP2000','IS2000', 'HOURS00',# 'COUNT2000', 'HS2000','WS2000','WW2000',
-       'DMG2010', 'DMGCP2010', 'IS2010', 'HOURS10',#'COUNT2010', 'HS2010','WS2010','WW2010',
-       'DMG2020', 'DMGCP2020','IS2020', 'HOURS20',#'COUNT2020', 'HS2020','WS2020','WW2020',
+cols = ['DMG', 'DMGCPI', 'COUNT',
+       'DMG2000', 'DMGCP2000','IS2000', 'HOURS00','COUNT2000', 'HS2000','WS2000','WW2000',
+       'DMG2010', 'DMGCP2010', 'IS2010', 'HOURS10','COUNT2010', 'HS2010','WS2010','WW2010',
+       'DMG2020', 'DMGCP2020','IS2020', 'HOURS20','COUNT2020', 'HS2020','WS2020','WW2020',
        'POP2000', 'PNW2000', 'MICPI2000', 'MGRCP2000', 
        'POP2010', 'PNW2010','MICPI2010', 'MGRCP2010', 
        'POP2020', 'PNW2020', 'MICPI2020', 'MGRCP2020', 

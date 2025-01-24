@@ -45,5 +45,13 @@ for i in range(3):
     ax[2].set_xlabel('p-value={:.3f}   R2={:.1f}   slope={:.3f}'.format(p,r,slope))
     ax[2].set_ylabel('max temperature (F)')
 
+    y=df['Tmax']
+    Y=np.array(df['Tmax'])
+    slope, intercept, r, p, se = linregress(X,Y)
+    ax[2].plot(x,y)
+    ax[2].plot(x,slope*X+intercept,'k--')
+    ax[2].set_xlabel('p-value={:.3f}   R2={:.1f}   slope={:.3f}'.format(p,r,slope))
+    ax[2].set_ylabel('max temperature (F)')
+
     plt.tight_layout()
     plt.savefig(dir+'\\Arkansas Trends/'+counties[i]+' Trends.png')

@@ -7,14 +7,14 @@ from datetime import datetime
 
 dir = os.path.dirname(os.path.abspath(__file__))
 
-vars = ['Precip','Max Temp','Min Temp']
-names = ['precipitation','max temperature','minimum temperature']
-units = ['(in)','(F)','(F)']
+vars = ['Precip', 'Avg Temp']#'Max Temp','Min Temp',
+names = ['precipitation','avg temperature']#'max temperature','minimum temperature']
+units = ['(in)','(F)']#,'(F)']
 
-fig, ax = plt.subplots(1,3, figsize=(16,6))
+fig, ax = plt.subplots(1,len(vars), figsize=(11,6))
 fig.suptitle('Trends in Arkansas from 1900-2024')
 
-for i in range(3):
+for i in range(len(vars)):
     df = pd.read_csv(dir+'\\Arkansas Trends/Statewide '+vars[i]+'.csv')
     for j in range(len(df)):
         df.loc[j,'Date'] = datetime.strptime(str(df.loc[j,'Date']), "%Y%m")
@@ -29,7 +29,7 @@ for i in range(3):
 
     ax[i].plot(x,y)
     ax[i].plot(x,slope*X+intercept,'k--')
-    ax[i].set_xlabel('p-value={:.3f}   R2={:.1f}   slope={:.3f}'.format(p,r,slope))
+    ax[i].set_xlabel('p-value={:.3f}   R2={:.2f}   slope={:.3f}'.format(p,r,slope))
     ax[i].set_ylabel(names[i]+' '+units[i])
 
 

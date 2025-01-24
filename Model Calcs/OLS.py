@@ -5,12 +5,13 @@ import statsmodels.api as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 dir = os.path.dirname(os.path.abspath(__file__))
 df = pd.read_csv(dir+'\\master_scaled.csv')
+year = '20'
+Y = df['DMGPOP20'+year]
 
-Y = df['DMGPOP2020']
-# X = df[['HS2000','WS2000','IS2000','HOURS00',
-#         'MGRCP2000','PNW2000','MICPI2000',
-#         'AG01','FOR01','URB01','WAT01','ELEV',
-#         'TMP2000','PCP2000','SNW2000']]
+X = df[['HS20'+year,'WS20'+year,'IS20'+year,'HOURS'+year,
+        'MGRCP20'+year,'PNW20'+year,'MICPI20'+year,
+        'AG21','FOR21','URB21','WAT21','ELEV',
+        'TMP20'+year,'PCP20'+year,'SNW20'+year]]
 
 # X = df[['HS2010',
 #         'MICPI2010','FOR11','WAT11','ELEV',
@@ -18,7 +19,7 @@ Y = df['DMGPOP2020']
 
 # X = df[['HS2000','WS2000','IS2000','HOURS00','ELEV','SNW2000']]
 # X = df[['WS2010','HOURS10','MICPI2010','FOR11','WAT11','ELEV','PCP2010']]
-X = df[['IS2020','AG21','FOR21','ELEV','TMP2020']]
+# X = df[['IS2020','AG21','FOR21','ELEV','TMP2020']]
 
 # X = df[['FOR01','TMP2000']]
 # X = df[['PNW2000','AG01','FOR01','TMP2000','PCP2000','SNW2000']]
