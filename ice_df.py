@@ -122,6 +122,11 @@ for i in range(len(mtmp)):
 mtmp = mtmp.set_index('COUNTY')
 mtmp = mtmp.sort_index()
 
+#---------------------------------% REPORTING-----------------------------------#
+PR = pd.read_csv(dir+'/Percent_Reporting.csv')
+PR = PR.set_index('COUNTY')
+PR = PR.sort_index()
+
 #------------------------------main csv-------------------------------------#
 for county in county_names:
     df.loc[county,'County_low'] = mtmp.loc[county,'county_name']
@@ -198,6 +203,9 @@ for county in county_names:
     df.loc[county,'TMP2020'] = mtmp.loc[county,'mean temp (2020)']
     df.loc[county,'PCP2020'] = mtmp.loc[county,'mean precip (2020)']
     df.loc[county,'SNW2020'] = mtmp.loc[county,'mean snow (2020)']
+    df.loc[county,'PR2000'] = PR.loc[county,'PerRep00']
+    df.loc[county,'PR2010'] = PR.loc[county,'PerRep10']
+    df.loc[county,'PR2020'] = PR.loc[county,'PerRep20']
 
 df['DMGPOP2000'] = df['DMGCP2000'] / df['POP2000']  
 df['DMGPOP2010'] = df['DMGCP2010'] / df['POP2010']  
@@ -223,7 +231,8 @@ cols = ['DMG', 'DMGCPI', 'COUNT',
        'POP2020', 'PNW2020', 'MICPI2020', 'MGRCP2020', 
        'AG01', 'FOR01','URB01', 'WAT01', 'AG11', 'FOR11','URB11', 'WAT11', 'AG21', 'FOR21','URB21', 'WAT21', 
        'ELEV', 'TMP2000', 'PCP2000', 'SNW2000', 'TMP2010', 'PCP2010',
-       'SNW2010','TMP2020', 'PCP2020','SNW2020','DMGPOP2000', 'DMGPOP2010', 'DMGPOP2020']#,
+       'SNW2010','TMP2020', 'PCP2020','SNW2020','DMGPOP2000', 'DMGPOP2010', 'DMGPOP2020',
+       'PR2000','PR2010','PR2020']#,
     #    'DPC2000', 'DPC2010', 'DPC2020']
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()

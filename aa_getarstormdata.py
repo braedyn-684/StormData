@@ -52,3 +52,19 @@ for i in range(len(combined_df)):
 
 combined_df.to_csv(dir+'\\Storm Data.csv', index=False)
 
+
+
+dfs1=[]
+for csv_file in csv_files:
+    df = pd.read_csv(stormevents_dir+'/'+csv_file)
+    
+    # df['BEGIN_DATE_TIME'] = pd.to_datetime(df['BEGIN_DATE_TIME'])
+    # df['END_DATE_TIME'] = pd.to_datetime(df['END_DATE_TIME'])   
+    df = df[df['STATE']=='ARKANSAS']
+    df = df[df['WFO']=='SHV']
+    df = df[df['EVENT_TYPE'].isin(event_types)]
+    dfs1.append(df)
+
+
+combined_df1 = pd.concat(dfs1, ignore_index=True)
+combined_df1.to_csv(dir+'\\SHV Storm Data.csv', index=False)
