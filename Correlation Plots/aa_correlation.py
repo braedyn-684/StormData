@@ -23,6 +23,7 @@ for i in range(len(Var_Name)):
     ELEV = np.array(df[VAR_NAME[i]])
     fig, ax1 = plt.subplots(figsize = (5, 5))
     slope, intercept, r, p, se = linregress(DMG, ELEV)
+    r=r**2
     ax1.scatter(DMG, ELEV, s=5, color='k')
 
     
@@ -35,7 +36,7 @@ for i in range(len(Var_Name)):
         ax1.set_xticks(np.linspace(0, 400000000, 5))
         xticks = ax1.get_xticks()
         ax1.set_xticklabels([f'${x/1e6:.0f}M' for x in xticks])
-        plt.text(70000000, -70000, 'p-value={:.3f}   R={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
+        plt.text(70000000, -70000, 'p-value={:.3f}   R\u00b2={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
     if VAR_NAME[i] == 'POP2010':
         yticks = ax1.get_yticks()
         ax1.set_yticklabels([f'{y/1e3:.0f}K' for y in yticks])
@@ -43,7 +44,7 @@ for i in range(len(Var_Name)):
         ax1.set_xticks(np.linspace(0, 90000000, 5))
         xticks = ax1.get_xticks()
         ax1.set_xticklabels([f'${x/1e6:.0f}M' for x in xticks])
-        plt.text(15000000, -70000, 'p-value={:.3f}   R={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
+        plt.text(15000000, -70000, 'p-value={:.3f}   R\u00b2={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
     if VAR_NAME[i] == 'POP2020':
         yticks = ax1.get_yticks()
         ax1.set_yticklabels([f'{y/1e3:.0f}K' for y in yticks])
@@ -52,7 +53,7 @@ for i in range(len(Var_Name)):
         ax1.set_xticks(np.linspace(0, 700000, 5))
         xticks = ax1.get_xticks()
         ax1.set_xticklabels([f'${x/1e3:.0f}K' for x in xticks])
-        plt.text(100000, -70000, 'p-value={:.3f}   R={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
+        plt.text(100000, -70000, 'p-value={:.3f}   R\u00b2={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
     if VAR_NAME[i] == 'COUNT':
         yticks = ax1.get_yticks()
         ax1.set_yticklabels([f'{y:.0f}' for y in yticks])
@@ -61,7 +62,7 @@ for i in range(len(Var_Name)):
         ax1.set_xticks(np.linspace(0, 400100000, 5))
         xticks = ax1.get_xticks()
         ax1.set_xticklabels([f'${x/1e6:.0f}M' for x in xticks])
-        plt.text(90000000, 5, 'p-value={:.3f}   R={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
+        plt.text(90000000, 5, 'p-value={:.3f}   R\u00b2={:.3f}   slope={:.3f}'.format(p,r,slope), fontsize=8)
     plt.plot(DMG,(slope*DMG)+intercept,'b-.')
     plt.grid()
     plt.tight_layout()

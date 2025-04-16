@@ -38,10 +38,11 @@ for i in range(len(vars)):
     X=np.array(df1.index)
     Y=np.array(df1['Converted'])
     slope, intercept, r, p, se = linregress(X,Y)
+    r2 = r**2
 
     ax[i].plot(x,y)
     ax[i].plot(x,slope*X+intercept,'k--')
-    ax[i].set_xlabel('p-value={:.3f}   R\u00b2={:.2f}   slope={:.3f}'.format(p,r,slope))
+    ax[i].set_xlabel('p-value={:.3f}   R\u00b2={:.2f}   slope={:.3f}'.format(p,r2,slope))
     ax[i].set_ylabel(names[i]+' '+units[i])
 
 plt.tight_layout()
